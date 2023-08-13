@@ -4,6 +4,7 @@ import {BaseEntity} from "../../../common/entities/BaseEntity";
 import {BusinessAccount} from "../../businessAccounts/entities/BusinessAccount";
 import {Sector} from "../../common/entities/Sector";
 import {CreateBrandInput, UpdateBrandInput} from "../input/BrandInput";
+import {BrandStatus} from "./BrandStatus";
 
 @ObjectType()
 @Entity()
@@ -11,6 +12,14 @@ export default class Brand extends BaseEntity {
     @Column()
     @Field()
     name!: string;
+
+    @Column({
+        type: "enum",
+        enum: BrandStatus,
+        default: BrandStatus.IN_PROGRESS,
+    })
+    @Field(() => BrandStatus)
+    status!: BrandStatus;
 
     @Column({nullable: true})
     @Field({nullable: true})

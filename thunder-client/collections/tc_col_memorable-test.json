@@ -14,7 +14,7 @@
             "method": "POST",
             "sortNum": 20000,
             "created": "2023-07-03T09:31:53.814Z",
-            "modified": "2023-07-03T09:37:51.923Z",
+            "modified": "2023-08-13T00:09:23.946Z",
             "headers": [],
             "params": [],
             "body": {
@@ -72,7 +72,7 @@
             "method": "POST",
             "sortNum": 40000,
             "created": "2023-07-03T09:33:34.680Z",
-            "modified": "2023-07-03T09:41:10.206Z",
+            "modified": "2023-08-12T22:49:17.442Z",
             "headers": [
                 {
                     "name": "authorization",
@@ -100,7 +100,7 @@
             "method": "POST",
             "sortNum": 50000,
             "created": "2023-07-03T09:41:40.278Z",
-            "modified": "2023-07-03T09:44:02.226Z",
+            "modified": "2023-08-13T16:35:20.292Z",
             "headers": [
                 {
                     "name": "authorization",
@@ -113,7 +113,7 @@
                 "raw": "",
                 "form": [],
                 "graphql": {
-                    "query": "mutation createBrand($brand: CreateBrandInput!){\n    createBrand(input: $brand){\n        id,\n        name,\n        createdAt,\n        logoUrl,\n        sector,\n    }\n}",
+                    "query": "mutation createBrand($brand: CreateBrandInput!){\n    createBrand(input: $brand){\n        id,\n        name,\n        createdAt,\n        logoUrl,\n        sector,\n        status,\n    }\n}",
                     "variables": "{\n  \"brand\": {\n    \"name\": \"Pharma Global 2\",\n    \"sector\": [\"PharmaceuticalsAndBiotechnology\"],\n    \"logoUrl\":\"logoUrl\"\n  }\n}"
                 }
             },
@@ -128,7 +128,7 @@
             "method": "POST",
             "sortNum": 60000,
             "created": "2023-07-03T09:42:36.064Z",
-            "modified": "2023-07-03T09:44:08.438Z",
+            "modified": "2023-08-12T23:56:23.405Z",
             "headers": [
                 {
                     "name": "authorization",
@@ -141,8 +141,36 @@
                 "raw": "",
                 "form": [],
                 "graphql": {
-                    "query": "mutation updateBrand($brandId: String!, $brand: UpdateBrandInput!){\n    updateBrand(brandId: $brandId, input: $brand){\n        id,\n        name,\n        createdAt,\n        logoUrl,\n        sector,\n    }\n}",
-                    "variables": "{\n  \"brand\": {\n    \"name\": \"Pharma Global\",\n    \"logoUrl\":\"logoUrl\",\n    \"sector\": [\"Utilities\"]\n    \n  },\n  \"brandId\": \"01H2Q81MZ45Y2FVD2KB0SDTMXR\"\n}"
+                    "query": "mutation updateBrand($brandId: String!, $brand: UpdateBrandInput!){\n    updateBrand(brandId: $brandId, input: $brand){\n        id,\n        name,\n        createdAt,\n        logoUrl,\n        sector,\n        status\n    }\n}",
+                    "variables": "{\n  \"brand\": {\n    \"name\": \"Pharma Global 4\",\n    \"logoUrl\":\"logoUrl\",\n    \"sector\": [\"Utilities\"]\n    \n  },\n  \"brandId\": \"01H7P2VG6PK1YCTPCEX4WPSBCE\"\n}"
+                }
+            },
+            "tests": []
+        },
+        {
+            "_id": "67ea772c-6618-4321-9f13-3f2a8817c277",
+            "colId": "bdfbad21-e244-4370-bf29-ebc7989769c1",
+            "containerId": "",
+            "name": "update Brand Status",
+            "url": "{{baseUrl}}",
+            "method": "POST",
+            "sortNum": 70000,
+            "created": "2023-08-12T23:33:51.376Z",
+            "modified": "2023-08-13T16:36:01.312Z",
+            "headers": [
+                {
+                    "name": "authorization",
+                    "value": "Bearer {{token}}"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "graphql",
+                "raw": "",
+                "form": [],
+                "graphql": {
+                    "query": "mutation updateBrandStatus($brandId: String!, $input: BrandStatusInput!) {\n  updateBrandStatus(brandId: $brandId, input: $input) {\n    id\n    name\n    createdAt\n    logoUrl\n    sector\n    status\n  }\n}",
+                    "variables": "{\n  \"brandId\": \"01H7P2VG6PK1YCTPCEX4WPSBCE\",\n  \"input\": {\n    \"status\": \"READY\"\n  }\n}"
                 }
             },
             "tests": []
